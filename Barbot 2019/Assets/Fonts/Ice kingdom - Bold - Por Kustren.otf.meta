@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fff808c51555f4149b4ad640ca812abe
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ice kingdom
+  fontNames:
+  - Ice kingdom
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 637e8698d6b2b4f4499c7ea9c825791a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
