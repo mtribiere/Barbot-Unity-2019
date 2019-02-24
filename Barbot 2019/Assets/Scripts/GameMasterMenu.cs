@@ -9,7 +9,7 @@ public class GameMasterMenu : MonoBehaviour
     //Au debut de la scene
     public void Start()
     {
-        StartCoroutine(enterAnimation());        
+        //StartCoroutine(enterAnimation());        
     }
 
     public void Update()
@@ -31,8 +31,17 @@ public class GameMasterMenu : MonoBehaviour
         }
     }
 
+    //Animation de sortie de scene
+    private IEnumerator exitAnimation(int NextSceneIndex)
+    {
+        while(transitionImage.GetComponent<Transform>().localPosition.y <= 300)
+        {
+            yield return new WaitForSeconds(0.01f);
+            transitionImage.transform.localPosition = Vector3.Lerp(transitionImage.transform.localPosition, new Vector3(0f, 0f, 0f), 5f * Time.deltaTime);
+        }
+    }
 
-
+    /*
     //Animation de sortie de scene
     private IEnumerator exitAnimation(int NextSceneIndex)
     {
@@ -42,11 +51,11 @@ public class GameMasterMenu : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+    */
 
+        //Variables
 
-    //Variables
-
-    //Lien vers l'image de transition
+        //Lien vers l'image de transition
     public GameObject transitionImage;
 
 
