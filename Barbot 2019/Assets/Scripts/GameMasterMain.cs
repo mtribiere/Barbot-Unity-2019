@@ -17,6 +17,7 @@ public class GameMasterMain : MonoBehaviour
         //Detecter l'appui sur Espace
         if (Input.GetKeyDown("space"))
         {
+            GameObject.FindObjectOfType<ArrowResultScript>().OnItemSelected(1);
             StartCoroutine(exitAnimation(0));
         }
     }
@@ -35,13 +36,19 @@ public class GameMasterMain : MonoBehaviour
     //Animation de sortie de scene
     private IEnumerator exitAnimation(int NextSceneIndex)
     {
+
+        yield return new WaitForSeconds(5f);
+
         while (transitionImage.GetComponent<RectTransform>().offsetMin.y <= -10)
         {
             yield return new WaitForSeconds(0.01f);
             transitionImage.GetComponent<RectTransform>().offsetMin = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMin, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMin.x, 0), transitionSpeed * Time.deltaTime);
             transitionImage.GetComponent<RectTransform>().offsetMax = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMax, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMax.x, 0), transitionSpeed * Time.deltaTime);
         }
+        //Attendre une seconde
         yield return new WaitForSeconds(1f);
+
+        //Charger la scene suivante
         SceneManager.LoadScene(NextSceneIndex);
     }
 

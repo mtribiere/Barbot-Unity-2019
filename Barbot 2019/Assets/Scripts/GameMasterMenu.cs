@@ -15,7 +15,7 @@ public class GameMasterMenu : MonoBehaviour
 
     public void Update()
     {
-        //Detecter l'appui sur Espace
+        //Detecter l'appui sur Espace pour changer de scene
         if (Input.GetKeyDown("space"))
         {
             StartCoroutine(exitAnimation(1));
