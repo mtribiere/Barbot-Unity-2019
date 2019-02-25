@@ -17,7 +17,7 @@ public class GameMasterMain : MonoBehaviour
         //Detecter l'appui sur Espace
         if (Input.GetKeyDown("space"))
         {
-            GameObject.FindObjectOfType<ArrowResultScript>().OnItemSelected(1);
+            GameObject.FindObjectOfType<ArrowResultScript>().OnItemSelected(Random.Range(0,3));
             StartCoroutine(exitAnimation(0));
         }
     }
