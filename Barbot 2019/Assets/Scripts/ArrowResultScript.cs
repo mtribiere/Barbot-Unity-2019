@@ -52,6 +52,9 @@ public class ArrowResultScript : MonoBehaviour {
         //Animer l'item choisi
         itemHolder.transform.GetChild(selectedItemId).GetComponent<Animator>().enabled = true;
 
+        //Animer la fleche
+        arrow.GetComponent<Animator>().enabled = true;
+
     }
 
     //Variables
