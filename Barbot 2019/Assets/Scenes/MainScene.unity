@@ -5851,8 +5851,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1507240646}
   - component: {fileID: 1507240648}
-  - component: {fileID: 1507240647}
   - component: {fileID: 1507240649}
+  - component: {fileID: 1507240647}
   m_Layer: 5
   m_Name: Item1Panel
   m_TagString: Untagged
@@ -6111,7 +6111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1749590742
 MonoBehaviour:
   m_ObjectHideFlags: 0

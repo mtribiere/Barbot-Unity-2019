@@ -17,7 +17,6 @@ public class ArrowResultScript : MonoBehaviour {
     {
         //Bouger la fléche
         arrow.transform.position = Vector3.Lerp(arrow.transform.position, targetPosition,animationSpeed * Time.deltaTime);
-
     }
 
     //Quand l'item est choisi
@@ -43,7 +42,7 @@ public class ArrowResultScript : MonoBehaviour {
             targetPosition = new Vector2(itemHolder.transform.GetChild(currentItemIndex).transform.position.x + 1.5f, itemHolder.transform.GetChild(currentItemIndex).transform.position.y);
             Debug.Log(currentItemIndex);
 
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         //Placer la fleche devant l'item choisi
