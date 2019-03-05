@@ -25,11 +25,11 @@ public class GameMasterMenu : MonoBehaviour
     //Animation d'entree de scene
     private IEnumerator enterAnimation()
     {
-        while (transitionImage.GetComponent<RectTransform>().offsetMin.y >= -640)
+        while (transitionImage.GetComponent<RectTransform>().offsetMin.y >= -990)
         {
             yield return new WaitForSeconds(0.01f);
-            transitionImage.GetComponent<RectTransform>().offsetMin = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMin, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMin.x, -650), transitionSpeed * Time.deltaTime);
-            transitionImage.GetComponent<RectTransform>().offsetMax = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMax, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMax.x, -650), transitionSpeed * Time.deltaTime);
+            transitionImage.GetComponent<RectTransform>().offsetMin = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMin, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMin.x, -1000), transitionSpeed * Time.deltaTime);
+            transitionImage.GetComponent<RectTransform>().offsetMax = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMax, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMax.x, -1000), transitionSpeed * Time.deltaTime);
         }
     }
 

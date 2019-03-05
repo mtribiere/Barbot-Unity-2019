@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,8 +9,14 @@ public class GameMasterMain : MonoBehaviour
 {
     void Start()
     {
-        //Au debut de la scene
+        //Demarrer la transition d'entree
         StartCoroutine(enterAnimation());
+        /*
+        //Initialiser la communication avec arduino
+        SerialPort arduino = new SerialPort("COM4", 9600);
+        arduino.ReadTimeout = 50;
+        arduino.Open();
+        */
     }
 
     void Update()
@@ -21,17 +28,25 @@ public class GameMasterMain : MonoBehaviour
             StartCoroutine(exitAnimation(0));
         }
     }
+    /*
+    //Coroutine de communication arduino
+    private IEnumerator readArduinoData(System.Action<string> callback)
+    {
+
+    }*/
+
 
     //Animation d'entree de scene
     private IEnumerator enterAnimation()
     {
-        while (transitionImage.GetComponent<RectTransform>().offsetMin.y >= -640)
+        while (transitionImage.GetComponent<RectTransform>().offsetMin.y >= -990)
         {
             yield return new WaitForSeconds(0.01f);
-            transitionImage.GetComponent<RectTransform>().offsetMin = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMin, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMin.x, -650), transitionSpeed * Time.deltaTime);
-            transitionImage.GetComponent<RectTransform>().offsetMax = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMax, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMax.x, -650), transitionSpeed * Time.deltaTime);
+            transitionImage.GetComponent<RectTransform>().offsetMin = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMin, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMin.x, -1000), transitionSpeed * Time.deltaTime);
+            transitionImage.GetComponent<RectTransform>().offsetMax = Vector3.Lerp(transitionImage.GetComponent<RectTransform>().offsetMax, new Vector2(transitionImage.GetComponent<RectTransform>().offsetMax.x, -1000), transitionSpeed * Time.deltaTime);
         }
     }
+
 
     //Animation de sortie de scene
     private IEnumerator exitAnimation(int NextSceneIndex)
