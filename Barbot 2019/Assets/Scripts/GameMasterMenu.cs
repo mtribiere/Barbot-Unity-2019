@@ -10,7 +10,10 @@ public class GameMasterMenu : MonoBehaviour
     //Au debut de la scene
     public void Start()
     {
-        StartCoroutine(enterAnimation());        
+        StartCoroutine(enterAnimation());
+
+        //Demarrer la lecture sur arduino
+        ArduinoCommunicatorScript.instance.startArduinoRead();
     }
 
     public void Update()
@@ -19,6 +22,19 @@ public class GameMasterMenu : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             StartCoroutine(exitAnimation(1));
+        }
+
+        //Verifier si un message est disponible
+        if (ArduinoCommunicatorScript.instance.getIsMessageReceived())
+        {
+            //Si le bouton Play est appuyé
+            if(ArduinoCommunicatorScript.instance.getMessage() == "P")
+            {
+                StartCoroutine(exitAnimation(1));
+            }
+
+            ArduinoCommunicatorScript.instance.clearFlag();
+            
         }
     }
 
@@ -59,7 +75,7 @@ public class GameMasterMenu : MonoBehaviour
     */
 
     //Variables
-    public float transitionSpeed = 5f;
+    public float transitionSpeed = 5f; 
 
     //Lien vers l'image de transition
     public GameObject transitionImage;

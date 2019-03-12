@@ -5,7 +5,11 @@ void setup() {
 
 void loop() {
 
- Serial.println("testArduino");
- delay(1000);
+ delay(10000);
+ Serial.println("!P?");
+ delay(10000);
+ Serial.println("!R2?");
+ delay(10000);
+ Serial.println("!D?");
 
 }

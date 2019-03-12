@@ -11,29 +11,70 @@ public class GameMasterMain : MonoBehaviour
     {
         //Demarrer la transition d'entree
         StartCoroutine(enterAnimation());
-        /*
-        //Initialiser la communication avec arduino
-        SerialPort arduino = new SerialPort("COM4", 9600);
-        arduino.ReadTimeout = 50;
-        arduino.Open();
-        */
+
+        //Demarrer la lecture sur arduino
+        ArduinoCommunicatorScript.instance.startArduinoRead();
     }
 
     void Update()
     {
         //Detecter l'appui sur Espace
         if (Input.GetKeyDown("space"))
-        {
-            GameObject.FindObjectOfType<ArrowResultScript>().OnItemSelected(Random.Range(0,3));
+        {  
             StartCoroutine(exitAnimation(0));
         }
-    }
-    /*
-    //Coroutine de communication arduino
-    private IEnumerator readArduinoData(System.Action<string> callback)
-    {
 
-    }*/
+        
+        //Verifier si un message est disponible
+        if (ArduinoCommunicatorScript.instance.getIsMessageReceived())
+        {
+            //Si le jeton est tombé
+            if(ArduinoCommunicatorScript.instance.getMessage()[0] == 'R')
+            {
+                GameObject.FindObjectOfType<ArrowResultScript>().OnItemSelected(charToInt(ArduinoCommunicatorScript.instance.getMessage()[1]));
+
+                //Relancer la lecture
+                ArduinoCommunicatorScript.instance.startArduinoRead();
+            }
+
+            //Si le verre est rempli
+            if(ArduinoCommunicatorScript.instance.getMessage()[0] == 'D')
+            {
+                StartCoroutine(exitAnimation(0));
+            }
+
+            ArduinoCommunicatorScript.instance.clearFlag();
+        }
+
+    }
+
+    //Conversion de char vers int
+    private int charToInt(char c)
+    {
+        int toReturn = -1;
+
+        switch (c)
+        {
+            case '0':
+                toReturn = 0;
+                break;
+            case '1':
+                toReturn = 1;
+                break;
+            case '2':
+                toReturn = 2;
+                break;
+            case '3':
+                toReturn = 3;
+                break;
+
+            default:
+                toReturn = -1;
+                break;
+        }
+
+        return toReturn;
+    }
 
 
     //Animation d'entree de scene

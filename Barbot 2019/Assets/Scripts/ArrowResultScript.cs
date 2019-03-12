@@ -11,6 +11,8 @@ public class ArrowResultScript : MonoBehaviour {
 
         //Demarrer l'animation de la fleche
         StartCoroutine(arrowAnimation());
+
+      
     }
 
     void Update()
@@ -40,7 +42,7 @@ public class ArrowResultScript : MonoBehaviour {
             
             //Definir la position de destination
             targetPosition = new Vector2(itemHolder.transform.GetChild(currentItemIndex).transform.position.x + 1.5f, itemHolder.transform.GetChild(currentItemIndex).transform.position.y);
-            Debug.Log(currentItemIndex);
+            //Debug.Log(currentItemIndex);
 
             yield return new WaitForSeconds(0.5f);
         }
