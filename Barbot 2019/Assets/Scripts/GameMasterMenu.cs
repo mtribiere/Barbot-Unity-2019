@@ -21,7 +21,7 @@ public class GameMasterMenu : MonoBehaviour
         //Detecter l'appui sur Espace pour changer de scene
         if (Input.GetKeyDown("space"))
         {
-            StartCoroutine(exitAnimation(2));
+            StartCoroutine(exitAnimation(1));
         }
 
         //Verifier si un message est disponible
@@ -30,7 +30,7 @@ public class GameMasterMenu : MonoBehaviour
             //Si le bouton Play est appuyé
             if(ArduinoCommunicatorScript.instance.getMessage() == "P")
             {
-                StartCoroutine(exitAnimation(2));
+                StartCoroutine(exitAnimation(1));
             }
 
             ArduinoCommunicatorScript.instance.clearFlag();
