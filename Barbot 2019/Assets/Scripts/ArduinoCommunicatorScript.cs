@@ -18,10 +18,16 @@ public class ArduinoCommunicatorScript : MonoBehaviour
 
     void Start()
     {
+        //Garder le gestionnaire de communication entre les scenes
         DontDestroyOnLoad(this.gameObject);
+    }
 
-        //Initialiser la communication avec arduino
-        arduino = new SerialPort("COM6", 9600);
+    //Initialiser la communication avec arduino
+    public void startArduinoConnection(string port)
+    {
+        arduinoCom = port;
+        
+        arduino = new SerialPort(arduinoCom, 9600);
         arduino.ReadTimeout = 50;
         arduino.Open();
 
@@ -108,6 +114,7 @@ public class ArduinoCommunicatorScript : MonoBehaviour
     SerialPort arduino;
     private bool messageReceivedFlag = false;
     private string messageReceived = "";
+    private string arduinoCom = "";
 
     //Instance du script
     public static ArduinoCommunicatorScript instance = null; 

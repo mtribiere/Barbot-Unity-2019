@@ -21,7 +21,7 @@ public class GameMasterMain : MonoBehaviour
         //Detecter l'appui sur Espace
         if (Input.GetKeyDown("space"))
         {  
-            StartCoroutine(exitAnimation(0));
+            StartCoroutine(exitAnimation(1));
         }
 
         
@@ -40,7 +40,7 @@ public class GameMasterMain : MonoBehaviour
             //Si le verre est rempli
             if(ArduinoCommunicatorScript.instance.getMessage()[0] == 'D')
             {
-                StartCoroutine(exitAnimation(0));
+                StartCoroutine(exitAnimation(1));
             }
 
             ArduinoCommunicatorScript.instance.clearFlag();

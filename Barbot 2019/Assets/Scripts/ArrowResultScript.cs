@@ -56,6 +56,8 @@ public class ArrowResultScript : MonoBehaviour {
         //Animer la fleche
         arrow.GetComponent<Animator>().enabled = true;
 
+        //Lancer les particules
+        particulesSystems[selectedItemId].GetComponent<ParticleSystem>().Play();
     }
 
     //Variables
@@ -71,6 +73,9 @@ public class ArrowResultScript : MonoBehaviour {
 
     //Lien vers les items
     public GameObject itemHolder;
+
+    //Lien vers les effets de particules
+    public GameObject[] particulesSystems;
 
     
 }

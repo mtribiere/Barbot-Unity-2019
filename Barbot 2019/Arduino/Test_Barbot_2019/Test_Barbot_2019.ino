@@ -5,10 +5,10 @@ void setup() {
 
 void loop() {
 
- delay(10000);
+ delay(15000);
  Serial.println("!P?");
  delay(10000);
- Serial.println("!R2?");
+ Serial.println("!R1?");
  delay(10000);
  Serial.println("!D?");
 
